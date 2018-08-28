@@ -53,8 +53,14 @@ namespace Week6Capstone.Controllers
             tasklistEntities ORM = new tasklistEntities();
 
             task TaskToComplete = ORM.tasks.Find(taskid);
-
-            TaskToComplete.status = true;
+            if (TaskToComplete.status == false)
+            {
+                TaskToComplete.status = true;
+            }
+            else
+            {
+                TaskToComplete.status = false;
+            }
 
             ORM.Entry(TaskToComplete).State = System.Data.Entity.EntityState.Modified;
 

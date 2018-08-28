@@ -15,6 +15,8 @@
 		<th>Description</th>
 		<th>Due Date</th>
 		<th>Task Is Complete</th>
+		<th>Complete Task</th>
+		<th>Delete Task</th>
 	</tr>
 
 	@foreach (var task in ViewBag.Tasks)
@@ -22,12 +24,12 @@
 		<tr>
 			<td>@task.taskid</td>
 			<td>@task.description</td>
-			<td>@task.duedate</td>
+			<td>@task.duedate.ToShortDateString()</td>
 			<td>@task.status</td>
 			<td>
 				<form action="/Home/CompleteTask">
 					<input type="hidden" name="taskid" value="@task.taskid" />
-					<button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-check"></span> Complete Task</button>
+					<button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-check"></span> Change Task Status</button>
 				</form>
 			</td>
 			<td>
